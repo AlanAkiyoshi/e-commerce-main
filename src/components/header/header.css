@@ -1,0 +1,29 @@
+.nav-bar {
+  position: sticky; /* faz o nav ficar fixo ao rolar */
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: rgba(0, 0, 0, 0.8); /* transparente escuro, ajusta a visibilidade */
+  transition: background-color 0.3s ease; /* efeito suave ao rolar se quiser animar */
+}
+
+.nav-bar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: white;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}

@@ -1,0 +1,66 @@
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 6px; /* Afasta do topo da navbar */
+}
+
+
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  color: #999;
+  font-size: 1em;
+  pointer-events: none;
+}
+
+.input {
+  font-size: 1em;
+  font-weight: 500;
+  padding: 0.6em 1em 0.6em 2.5em; /* espaço para o ícone */
+  border: none;
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  max-width: 200px;
+  color: #333;
+}
+
+.input:hover {
+  background-color: #f2f2f2;
+}
+
+.input:focus {
+  outline: none;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.input::placeholder {
+  color: #999;
+}
+
+.highlight {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #b60202;
+  transition: width 0.3s ease;
+}
+
+.input:focus + .highlight {
+  width: 100%;
+}
+
+@keyframes input-focus {
+  from { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0.1); }
+  to { transform: scale(1.02); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+}
+
+.input:focus {
+  animation: input-focus 0.3s ease;
+}

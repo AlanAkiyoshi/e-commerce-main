@@ -1,0 +1,171 @@
+body {
+  background-color: #8f8f8f1f;
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 95vh;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+form {
+  width: 100%;
+  z-index: 541230;
+}
+
+.login-box .logo {
+  width: 150px;
+  height: 87px;
+
+  object-fit: cover;
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  color: #000;
+}
+
+.login-box {
+  width: 400px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #fff;
+
+  border-radius: 7px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  border: #00000041 1px solid;
+
+  padding: 5px;
+}
+
+.login-box h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  color: #000;
+}
+
+.box-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-buttons .conta-button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-decoration: none;
+}
+
+.login-box input {
+  width: 98%;
+  height: 40px;
+
+  margin: 5px;
+
+  font-size: 1rem;
+
+  padding: 0 0.5rem;
+
+  border-radius: 7px;
+  border: #00000041 1px solid;
+}
+
+.login-box .login-button {
+  width: 98%;
+  height: 40px;
+
+  margin: 0.2rem 0px;
+  margin-top: 1.2rem;
+
+  border-radius: 7px;
+  border: #00000041 1px solid;
+
+  background-color: #000;
+  color: #fff;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-box .conta-button {
+  padding-top: 1rem;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  text-decoration: dashed;
+  text-decoration-color: none;
+}
+
+.login-box .email-box {
+  width: 95%;
+
+  margin-top: 20%;
+}
+
+.login-box .password-box {
+  width: 95%;
+}
+
+.login-box .login-button:hover {
+  color: #000;
+
+  background-color: #ffffff;
+}
+
+/* .conta-button {
+  border-radius: 7px;
+}
+
+.conta-button:hover {
+  color: #000;
+
+  background-color: #b81919;
+} */
+
+.remember-box {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 7px;
+
+  margin-bottom: 15px;
+}
+
+.remember-box span {
+  width: 50%;
+
+  padding-left: 5px;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.remember-box input {
+  width: 10%;
+  height: 15px;
+}

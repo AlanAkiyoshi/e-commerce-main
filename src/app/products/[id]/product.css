@@ -1,0 +1,188 @@
+/* ———————————————————— */
+/*   LAYOUT GERAL        */
+/* ———————————————————— */
+.product-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.product-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-image-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.main-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.thumbnail-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.thumbnail {
+  border: 2px solid transparent;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.2s ease;
+}
+
+.thumbnail:hover {
+  border-color: #ccc;
+}
+
+.thumbnail.active {
+  border-color: #000;
+}
+
+/* ———————————————————— */
+/*   INFORMAÇÕES         */
+/* ———————————————————— */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.product-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  color: #2b8a3e;
+  margin-bottom: 1rem;
+}
+
+.product-description {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* ———————————————————— */
+/*   TAMANHOS            */
+/* ———————————————————— */
+.product-size label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.size-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.size-btn {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.size-btn:hover {
+  border-color: #000;
+}
+
+.size-btn.active {
+  background: #000;
+  color: white;
+  border-color: #000;
+}
+
+/* ———————————————————— */
+/*   QUANTIDADE          */
+/* ———————————————————— */
+.product-quantity label {
+  display: block;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.quantity-control button {
+  width: 35px;
+  height: 35px;
+  font-size: 1.5rem;
+  border: none;
+  background: #eee;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.quantity-control button:hover {
+  background: #ddd;
+}
+
+.quantity-control span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-width: 25px;
+  text-align: center;
+}
+
+/* ———————————————————— */
+/*   BOTÃO DE COMPRA     */
+/* ———————————————————— */
+.buy-button {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1rem;
+  background-color: #000;
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.buy-button:hover {
+  background-color: #2b2b2b;
+}
+
+/* ———————————————————— */
+/*   RESPONSIVO          */
+/* ———————————————————— */
+@media (max-width: 768px) {
+  .product-page {
+    grid-template-columns: 1fr;
+  }
+
+  .main-image-container {
+    max-width: 100%;
+  }
+
+  .product-info {
+    margin-top: 2rem;
+  }
+
+  .size-buttons {
+    flex-wrap: wrap;
+  }
+}
