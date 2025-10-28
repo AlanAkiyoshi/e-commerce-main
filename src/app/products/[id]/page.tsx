@@ -1,8 +1,9 @@
+// src/app/products/[id]/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import "./products.css";
+import "./product.css"; // corrigido: antes estava './products.css'
 
 async function getProduct(id: string) {
   const res = await fetch(`/api/products/${id}`, { cache: "no-store" });
