@@ -1,9 +1,10 @@
 // src/app/products/[id]/page.tsx
+
 "use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import "./product.css"; // corrigido: antes estava './products.css'
+import "./product.css"; // ajustando para o seu CSS já existente
 
 async function getProduct(id: string) {
   const res = await fetch(`/api/products/${id}`, { cache: "no-store" });
@@ -48,14 +49,14 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     }
   };
 
-  const addToCart = async () => {
+  const buyNow = async () => {
     if (!selectedSize || !product) {
-      alert("Selecione um tamanho antes de adicionar ao carrinho.");
+      alert("Selecione um tamanho antes de comprar.");
       return;
     }
 
     try {
-      const res = await fetch("/api/cart", {
+      const res = await fetch("/api/sales", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -64,13 +65,27 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           quantity,
         }),
       });
-      if (!res.ok) throw new Error("Erro ao adicionar ao carrinho");
-      alert("Produto adicionado ao carrinho!");
-    } catch (error) {
-      console.error(error);
-      alert("Não foi possível adicionar ao carrinho.");
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.message || "Erro ao realizar a compra.");
+        return;
+      }
+
+      alert(`Compra concluída com sucesso! 🛒\nEstoque restante: ${data.remainingStock}`);
+
+      const updatedSizes = product.sizes.map((s: any) =>
+        s.size === selectedSize ? { ...s, stock: data.remainingStock } : s
+      );
+      setProduct({ ...product, sizes: updatedSizes });
+      setQuantity(1);
+    } catch (err) {
+      console.error(err);
+      alert("Erro ao realizar a compra.");
     }
   };
+
 
   if (loading) return <div className="loading">Carregando produto...</div>;
   if (!product) return <div className="not-found">Produto não encontrado 😢</div>;
@@ -137,8 +152,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           {stockMessage && <p className="stock-message">{stockMessage}</p>}
         </div>
 
-        <button className="buy-button" onClick={addToCart}>
-          Adicionar ao carrinho 🛒
+        <button className="buy-button" onClick={buyNow}>
+          Comprar agora 🛒
         </button>
       </div>
     </div>

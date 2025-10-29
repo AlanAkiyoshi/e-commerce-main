@@ -36,6 +36,7 @@ model Product {
   orders      Order[]
   category    Category @relation(fields: [categoryId], references: [id])
   sizes       Size[]
+  sales       Sale[]
 }
 
 model Size {
@@ -61,4 +62,16 @@ model Order {
   totalPrice Float
   createdAt  DateTime @default(now())
   product    Product  @relation(fields: [productId], references: [id])
+}
+
+model Sale {
+  id        String   @id @default(cuid())
+  productId String
+  size      String
+  quantity  Int
+  price     Float
+  total     Float
+  createdAt DateTime @default(now())
+
+  product Product @relation(fields: [productId], references: [id])
 }
