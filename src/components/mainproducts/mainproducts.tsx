@@ -2,7 +2,6 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import LoadingProduct from "../loadingproduct/loading";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
@@ -116,7 +115,7 @@ const MainProducts = () => {
             </div>
           ))
         ) : (
-          <LoadingProduct />
+          <div/>
         )}
       </div>
       <ToastContainer />
