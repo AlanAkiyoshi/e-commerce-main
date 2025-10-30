@@ -1,6 +1,6 @@
 .nav-bar { 
   position: fixed;
-  top: 20px;          /* Distância da parte de cima */
+  top: 20px;
   left: 20px;
   right: 20px;
   z-index: 100;
@@ -10,9 +10,9 @@
   background-color: rgba(0, 0, 0, 0.95);
   border-radius: 25px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  font-size: 0.8rem;
-  height:20px;       /* Altura da barra */
-  padding: 0 20px;
+  font-size: 0.9rem;
+  height: 60px;
+  padding: 0 25px;
 }
 
 .nav-left, .nav-center, .nav-right {
@@ -24,22 +24,29 @@
   flex: 1;
 }
 
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;          /* Espaçamento entre pesquisa, carrinho e login */
-}
-
 .logo {
   height: 50px;
   width: auto;
+  transition: transform 0.3s ease;
 }
 
-.card-box, .link {
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.admin-button {
   color: white;
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.8rem;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 114, 255, 0.3);
+}
+
+.admin-button:hover {
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 114, 255, 0.5);
 }

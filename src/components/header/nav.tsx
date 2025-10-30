@@ -1,12 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-
-import { BiUser } from "react-icons/bi";
-import { BsCart3 } from "react-icons/bs";
-
 import logo from "../../assets/logo.png";
 import "./nav.css";
-import Button_Search from "../search/button_search";
 
 const Nav = () => {
   return (
@@ -17,18 +12,11 @@ const Nav = () => {
         </Link>
       </div>
 
-      <div className="nav-center"></div> {/* Espaço vazio para separar esquerda/direita */}
+      <div className="nav-center"></div>
 
       <div className="nav-right">
-        <Button_Search />
-        {/* Botão do carrinho atualizado */}
-        <Link href="/cart" className="card-box">
-          <BsCart3 className="cart" />
-          Meu Carrinho
-        </Link>
-        <Link href="/login" className="link">
-          <BiUser className="user" />
-          <b>Entre</b> ou <b>Cadastre-se</b>
+        <Link href="/products/manage" className="admin-button">
+          🛠 Administração
         </Link>
       </div>
     </nav>

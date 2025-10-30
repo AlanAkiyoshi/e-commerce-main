@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prebuild": "npx prisma generate",
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
@@ -28,6 +29,7 @@
     "encoding": "^0.1.13",
     "eslint": "8.49.0",
     "eslint-config-next": "13.5.2",
+    "exceljs": "^4.4.0",
     "firebase": "^10.5.2",
     "heroicons": "^2.0.18",
     "i": "^0.3.7",

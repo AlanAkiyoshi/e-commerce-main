@@ -1,10 +1,8 @@
-// src/app/products/[id]/page.tsx
-
 "use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import "./product.css"; // ajustando para o seu CSS já existente
+import "./product.css"; // CSS que você já está usando
 
 async function getProduct(id: string) {
   const res = await fetch(`/api/products/${id}`, { cache: "no-store" });
@@ -30,14 +28,14 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       .finally(() => setLoading(false));
   }, [params.id]);
 
+  // 🔹 Calcula o estoque do tamanho selecionado
+  const selectedStock =
+    product?.sizes?.find((s: any) => s.size === selectedSize)?.stock ?? 0;
+
   const handleQuantity = (type: "increment" | "decrement") => {
     if (!selectedSize || !product) return;
-
-    const selectedProductSize = product.sizes.find((s: any) => s.size === selectedSize);
-    const maxStock = selectedProductSize?.stock || 1;
-
     if (type === "increment") {
-      if (quantity < maxStock) {
+      if (quantity < selectedStock) {
         setQuantity((q) => q + 1);
         setStockMessage("");
       } else {
@@ -86,12 +84,12 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     }
   };
 
-
   if (loading) return <div className="loading">Carregando produto...</div>;
   if (!product) return <div className="not-found">Produto não encontrado 😢</div>;
 
   return (
     <div className="product-page">
+      {/* GALERIA DE IMAGENS */}
       <div className="product-gallery">
         <div className="main-image-container">
           <Image
@@ -103,6 +101,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             priority
           />
         </div>
+
         <div className="thumbnail-container">
           {product.images?.map((img: any, idx: number) => (
             <Image
@@ -118,13 +117,15 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         </div>
       </div>
 
+      {/* INFORMAÇÕES DO PRODUTO */}
       <div className="product-info">
         <h1 className="product-title">{product.name}</h1>
         <p className="product-price">R$ {product.price.toFixed(2)}</p>
         <p className="product-description">{product.description}</p>
 
+        {/* TAMANHOS */}
         <div className="product-size">
-          <label>Tamanho:</label>
+          <label>Tamanhos disponíveis:</label>
           <div className="size-buttons">
             {product.sizes?.map((s: any) => (
               <button
@@ -135,13 +136,22 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   setQuantity(1);
                   setStockMessage("");
                 }}
+                disabled={s.stock === 0}
               >
-                {s.size} ({s.stock} disponíveis)
+                {s.size}
               </button>
             ))}
           </div>
+
+          {/* ESTOQUE ABAIXO */}
+          {selectedSize && (
+            <div className="stock-below">
+              🧦 Estoque disponível: {selectedStock} unidades
+            </div>
+          )}
         </div>
 
+        {/* QUANTIDADE */}
         <div className="product-quantity">
           <label>Quantidade:</label>
           <div className="quantity-control">
@@ -152,9 +162,12 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           {stockMessage && <p className="stock-message">{stockMessage}</p>}
         </div>
 
-        <button className="buy-button" onClick={buyNow}>
-          Comprar agora 🛒
-        </button>
+        {/* BOTÃO DE COMPRA */}
+        <div className="buy-section">
+          <button className="buy-button" onClick={buyNow}>
+            Comprar agora
+          </button>
+        </div>
       </div>
     </div>
   );
